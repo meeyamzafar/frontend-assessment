@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>MindArc Exercise 2 | Akber Iqbal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+
+<script>
+  $(document).ready(function () {
+    var dataLoaded = false;
+    console.log(('b' + 'a' + + 'a' + 'a'), "... we get NaN (not a number) from  +'a', take a look:", (+'a'));
+    console.log(('a' + 'b' + + 'c'), "... we get NaN (not a number) from  +'c', take a look:", (+'c'));
+
+    function hideMessage() {
+      $('#welcomeMessage').addClass('slowHide');
+    }
+
+
+    $.ajax({
+      url: 'data.json',
+      type: 'GET',
+      success: function (data) {
+        dataLoaded = true;
+        console.log("Data: ", data, "\nStatus: ", status, ' dataLoaded:', dataLoaded);
+        hideMessage();
+        $(".container").addClass('slowShow');
+
+        for (var i = 0; i < data.length; i++) {
+
+          var collapseName = `collapse` + i;
+          var accordionSection = `
+                      <div class="card">
+                        <div class="card-header">
+                          <a class="card-link collapsed" data-toggle="collapse" href="#`+ collapseName + `">` + data[i].title + `
+                            </a>
+                        </div>
+                        <div id="`+ collapseName + `" class="collapse" data-parent="#accordion">
+                          <div class="card-body">
+                  `+ data[i].content + `
+                          </div>
+                        </div>
+                      </div>
+      `
+          $("#accordion").append(accordionSection);
+
+          var tabsName = 'tab' + i;
+          var tabsSectionHead = `
+                      <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#`+ tabsName + `">` + data[i].title + `</a>
+                      </li>
+        `;
+          var tabsSectionDetail = `
+                      <div id="`+ tabsName + `" class="container tab-pane">
+                        <br>
+                        `+ data[i].content + `
+                      </div>
+        `
+
+          $('#tabsHead').append(tabsSectionHead);
+          $('#tabsDetails').append(tabsSectionDetail);
+        }
+
+        $('#collapse0').addClass('show');
+        $('.container>a:nth-child(1)').removeClass('collapsed');
+
+        $(".nav-tabs>li:nth-child(1)>a").addClass('active');
+        $('#tab0').addClass('active');
+      },
+      error: function (data) {
+        hideMessage();
+        $("#errorMessage").css('display', 'block');
+      }
+    });
+  });
+</script>
+<body>
+  <div id='div1'></div>
+  <div id='welcomeMessage'> This message will go away once the data is ready and loaded
+  </div>
+  <div id='errorMessage'>Sorry, unable to fetch the required data</div>
+
+  <div class="container ">
+
+    <div id="accordion" class='d-none d-md-block'>
+    </div>
+
+    <div class="d-block  d-md-none" id='tabs'>
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist" id='tabsHead'>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content" id='tabsDetails'>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #welcomeMessage,
+    #errorMessage {
+      text-align: center;
+    }
+
+    .slowHide {
+      opacity: 0;
+      animation: example 2s ease-in-out;
+    }
+
+    @keyframes example {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    .slowShow {
+      opacity: 1;
+      animation: slowReveal 2s ease-in-out;
+    }
+
+    @keyframes slowReveal {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .nav-tabs .nav-link.active {
+      background: #007bff;
+      color: #fff;
+    }
+
+    .tab-content {
+      padding: .5rem 1rem;
+      border: 1px dashed #212529;
+    }
+
+    .card-header {
+      padding: 0;
+    }
+
+    .card-header .card-link {
+      cursor: pointer;
+      display: block;
+      padding: .75rem 1.25rem;
+      background: #007bff;
+      color: #fff;
+    }
+
+    #errorMessage {
+      display: none;
+    }
+
+    body {
+      background: lightblue;
+    }
+
+    .container {
+      background: #fff;
+    }
+
+    #accordion,
+    #tabs {
+      padding: 20px 0;
+    }
+  </style>
+
+</body>
+</html>
