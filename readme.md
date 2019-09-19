@@ -1,11 +1,11 @@
 Thank you for giving me the oppurtunity to work on this test.
 ---
 
-For Exercise 1, I am attaching some snapshots in the folder called snapshots which show how the design is rendered across different responsive sizes for me.
+For Exercise 1, I have resized my browser to check responsiveness, and also used the Chrome Inspector Device inspector to se how the mobile version renders across various devices.
 
-For Exercise 2, please note that because of a cross-browser origin problem, the data.json cannot be loaded unless we call it using a web server, or an http request via AJAX or any jquery method like getJSON.
+For Exercise 2, please note that because of a cross-browser origin problem, the data.json cannot be loaded unless we call it over a web server, or an http request via AJAX or any jquery method like getJSON.
 
-To avoid this, I am asking the user to load the file using a file chooser (simple html input file chooser) which will load the file, and then traverse it to generate tabs and accordions.
+To avoid this, I am asking the user to load the file using a file chooser (simple html input file chooser) which will load the file, and then traverse it to generate tabs and accordions. Please choose the data.json file when the input prompts.
 
 
 Question and Answer
