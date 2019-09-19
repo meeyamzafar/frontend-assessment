@@ -1,11 +1,11 @@
 Thank you for giving me the oppurtunity to work on this test.
 ---
 
-######For Exercise 1
+###### For Exercise 1
 ---
 I have resized my browser to check responsiveness, and also used the Chrome Inspector Device inspector to se how the mobile version renders across various devices.
 
-######For Exercise 2
+###### For Exercise 2
 ---
 Please note that because of a cross-browser origin problem, the data.json cannot be loaded unless we call it over a web server, or an http request via AJAX or any jquery method like getJSON.
 
