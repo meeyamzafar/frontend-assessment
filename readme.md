@@ -5,7 +5,7 @@ For Exercise 1, I have resized my browser to check responsiveness, and also used
 
 For Exercise 2, please note that because of a cross-browser origin problem, the data.json cannot be loaded unless we call it over a web server, or an http request via AJAX or any jquery method like getJSON.
 
-To avoid this, I am asking the user to load the file using a file chooser (simple html input file chooser) which will load the file, and then traverse it to generate tabs and accordions. Please choose the data.json file when the input prompts.
+To avoid this, I am asking the user to load the file using a file chooser (simple html input file chooser) which will load the file, and then traverse it to generate tabs and accordions. Please choose the data.json file when the input prompts. The breakpoint to transition into accordions is 768px. I have added a very slight animation, please note that all user experience  and user interface can be improved via animations and colors.
 
 
 Question and Answer
